@@ -5,7 +5,7 @@ class dot():
     
     def drawDot(self, app, canvas):
         x0, y0, x1, y1 = app.maze.getCellBounds(self.r, self.c)
-        r = (y1-y0) // 2.5
+        r = 2 * (y1-y0) // 2.5
         canvas.create_oval(x0+r, y0+r, x1-r, y1-r, fill="orange")
 
     def __eq__(self, other):
