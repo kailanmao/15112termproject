@@ -9,7 +9,8 @@ class pacman(object):
     
     def drawPacman(self, app, canvas):
         x0, y0, x1, y1 = app.maze.getCellBounds(self.r, self.c)
-        canvas.create_oval(x0, y0, x1, y1, fill=self.color)
+        d = x1 - x0
+        canvas.create_oval(x0-d, y0-d, x1+d, y1+d, fill=self.color)
     
     def isLegal(self, app, direction):
         if direction == "Left":
@@ -66,15 +67,16 @@ class pacman(object):
     
     def drawPacmanMouth(self, app, canvas):
         x0, y0, x1, y1 = app.maze.getCellBounds(self.r, self.c)
+        d = x1 - x0
         if self.direction == "Up":
-            canvas.create_arc(x0,y0,x1,y1,width=2,style='pieslice',
+            canvas.create_arc(x0-d,y0-d,x1+d,y1+d,width=2,style='pieslice',
                         extent = 60, fill='black', start=60)
         elif self.direction == "Left":
-            canvas.create_arc(x0,y0,x1,y1,width=2,style='pieslice',
+            canvas.create_arc(x0-d,y0-d,x1+d,y1+d,width=2,style='pieslice',
                         extent = 60, fill='black', start=150)
         elif self.direction == "Down":
-            canvas.create_arc(x0,y0,x1,y1,width=2,style='pieslice',
+            canvas.create_arc(x0-d,y0-d,x1+d,y1+d,width=2,style='pieslice',
                         extent = 60, fill='black', start=240)
         else:
-            canvas.create_arc(x0,y0,x1,y1,width=2,style='pieslice',
+            canvas.create_arc(x0-d,y0-d,x1+d,y1+d,width=2,style='pieslice',
                         extent = 60, fill='black', start=330)

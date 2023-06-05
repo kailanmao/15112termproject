@@ -9,10 +9,16 @@ class maze(object):
     def drawMaze(self, canvas):
         for r in range(self.rows):
             for c in range(self.cols):
-                color = "blue" if self.mazeList[r][c] == 1 else "black"
+                value = self.mazeList[r][c]
+                color = ""
+                if value==2:
+                    color = "blue"
+                else:
+                    color="black"
+
                 canvas.create_rectangle(c*self.cellW, r*self.cellL,
                                         (c+1)*self.cellW, (r+1)*self.cellL,
-                                        fill=color)
+                                        fill=color,outline=color)
     
     def getCellBounds(self, r, c):
         return (self.cellW*c, self.cellL*r,
